@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Oficial de Cores • Barbantes & Fios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8F7F4;
+      --card-bg: #FFFFFF;
+      --text-main: #231F1C;
+      --text-muted: #7E7469;
+      --border: #E8E3D9;
+      --border-focus: #C4B9A7;
+      --accent: #9A6648;
+      --accent-hover: #835237;
+      --neon-orange: #FF6600;
+      --neon-yellow: #B5D400;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(44, 38, 30, 0.06), 0 2px 6px -1px rgba(44, 38, 30, 0.04);
+      --shadow-hover: 0 16px 32px -4px rgba(44, 38, 30, 0.12), 0 6px 12px -2px rgba(44, 38, 30, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding-bottom: 90px;
+    }
+
+    /* HEADER */
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 40px 24px 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: #F4EFEB;
+      border: 1px solid #E2D6CB;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: #231C18;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .header-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+
+    /* ACTION BAR */
+    .catalog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--text-main);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover {
+      background: #3B332E;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: #FFFFFF;
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: #F8F6F2;
+      border-color: var(--border-focus);
+    }
+
+    /* CONTROLS (SEARCH & FILTERS) */
+    .controls-container {
+      max-width: 1300px;
+      margin: 32px auto 24px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .controls-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      background: #FFFFFF;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(154, 102, 72, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* SECTIONS */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 32px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-title.neon-title {
+      color: #E05A00;
+    }
+    .section-title.neon-title::after {
+      background: #FFD1B3;
+    }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+    }
+
+    /* CARD STYLING */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-focus);
+    }
+
+    .card.neon-card {
+      border: 2px solid #FF8C42;
+    }
+    .card.neon-card:hover {
+      border-color: #FF5500;
+      box-shadow: 0 16px 32px -4px rgba(255, 102, 0, 0.2);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 4.8;
+      background: #F1ECE6;
+      overflow: hidden;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-select-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: all 0.2s;
+    }
+
+    .card-select-btn:hover {
+      background: #FFFFFF;
+      transform: scale(1.08);
+    }
+
+    .card-select-btn.selected {
+      background: #10B981;
+      border-color: #059669;
+      color: #FFFFFF;
+    }
+
+    .card-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .card-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #2D2722;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    .neon-card .card-badge.badge-1e {
+      background: #FF6600;
+      color: #FFFFFF;
+    }
+
+    .neon-card .card-badge.badge-2e {
+      background: #C4E000;
+      color: #2D3A00;
+    }
+
+    .card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .card-title {
+        font-size: 0.88rem;
+        white-space: normal;
+        line-height: 1.25;
+      }
+      .card-badge {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+      }
+      .card-body {
+        padding: 10px 12px;
+        gap: 8px;
+      }
+    }
+
+    .card-category {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .neon-card .card-category {
+      color: #E05A00;
+      font-weight: 700;
+    }
+
+    /* FLOATING CART BAR */
+    .order-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1E1B18;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      z-index: 100;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: calc(100% - 40px);
+      max-width: 580px;
+    }
+
+    .order-bar.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .order-bar-text {
+      flex: 1;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .order-bar-count {
+      font-weight: 800;
+      color: #34D399;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #FFFFFF;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-whatsapp:hover {
+      background: #1EBE5D;
+    }
+
+    .btn-clear {
+      background: transparent;
+      border: none;
+      color: #9CA3AF;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* LIGHTBOX MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 12, 10, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 200;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #FFFFFF;
+      border-radius: 20px;
+      max-width: 900px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: modalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (min-width: 768px) {
+      .modal-content {
+        flex-direction: row;
+      }
+    }
+
+    .modal-img-col {
+      flex: 1.2;
+      background: #F4EFEB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      max-height: 550px;
+      object-fit: cover;
+    }
+
+    .modal-info-col {
+      flex: 1;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.06);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .modal-close:hover {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .modal-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: #2D2722;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .modal-line {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .spec-label { color: var(--text-muted); }
+    .spec-val { font-weight: 600; color: var(--text-main); }
+
+    .modal-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+      background: #FFFFFF;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body { background: #FFFFFF; padding: 0; }
+      header { padding: 10px 0; }
+      .catalog-actions, .controls-container, .order-bar, .modal-overlay { display: none !important; }
+      .cards-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 10px !important; }
+      .card { box-shadow: none !important; border: 1px solid #CCC !important; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-badge">★ Catálogo Oficial 2026 • Barbantes & Fios</div>
+    <h1>Catálogo de Cores</h1>
+    <p class="header-sub">Fios 100% selecionados, toque macio, alta definição e rendimento superior para seus trabalhos em crochê, macramê e artesanato.</p>
+    
+    <div class="catalog-actions">
+      <a href="Catalogo_Completo_Barbantes.jpg" download="Catalogo_Completo_Barbantes.jpg" class="btn btn-primary">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Baixar Catálogo Geral (Ultra HD)
+      </a>
+      <a href="Catalogo_WhatsApp_Parte1.jpg" download="Catalogo_WhatsApp_Parte1.jpg" class="btn btn-outline">
+        📱 Cartela WhatsApp (Parte 1)
+      </a>
+      <a href="Catalogo_WhatsApp_Parte2.jpg" download="Catalogo_WhatsApp_Parte2.jpg" class="btn btn-outline">
+        📱 Cartela WhatsApp (Parte 2)
+      </a>
+      <button onclick="window.print()" class="btn btn-outline">
+        🖨️ Imprimir / Salvar PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTROLS -->
+  <div class="controls-container">
+    <div class="search-box">
+      <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Buscar por cor ou número (ex: rosa, terra, 05, neon)...">
+    </div>
+
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="setFilter('all', this)">Todas as Cores (19)</button>
+      <button class="tab-btn" onclick="setFilter('tradicional', this)">Linha Tradicional (17)</button>
+      <button class="tab-btn" onclick="setFilter('neon', this)">Cores Especiais Neon (2)</button>
+    </div>
+  </div>
+
+  <!-- MAIN CATALOG CONTENT -->
+  <main class="container">
+    <!-- TRADICIONAL SECTION -->
+    <div id="sec-tradicional">
+      <div class="section-title">
+        <span>Linha Tradicional</span>
+        <small style="font-weight: 500; font-size: 0.85rem; color: var(--text-muted);">(Cores 01 a 17)</small>
+      </div>
+      <div class="cards-grid" id="grid-tradicional"></div>
+    </div>
+
+    <!-- NEON SECTION -->
+    <div id="sec-neon">
+      <div class="section-title neon-title">
+        <span>Cores Especiais • Linha Neon</span>
+        <small style="font-weight: 500; font-size: 0.85rem; color: #E05A00;">(Cores 1E e 2E • Pigmentação Luminosa)</small>
+      </div>
+      <div class="cards-grid" id="grid-neon"></div>
+    </div>
+  </main>
+
+  <!-- FLOATING ORDER BAR -->
+  <div class="order-bar" id="orderBar">
+    <div class="order-bar-text">
+      <span class="order-bar-count" id="selectedCount">0</span> cores selecionadas
+    </div>
+    <button class="btn-whatsapp" onclick="copyWhatsAppOrder()">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.983.538 1.986.822 2.8.822 3.178 0 5.767-2.587 5.767-5.766.001-3.18-2.587-5.767-5.771-5.767zm-3.08 8.01c-.139 0-.303-.024-.467-.225-.164-.201-.63-0.617-.63-1.507s.646-1.748.74-1.876c.094-.128.21-.161.282-.161.071 0 .142.001.204.004.067.004.156-.026.244.185.094.225.32 0.781.348.839.028.058.047.126.009.2-.038.075-.057.122-.113.189-.057.066-.12.148-.171.198-.057.057-.116.119-.05.233.066.114.294.485.631.785.433.385.798.505.912.562.113.057.18.047.246-.028.066-.075.283-.33.359-.443.075-.113.151-.094.254-.056.104.038.659.311.772.368.113.057.189.085.217.132.028.047.028.273-.066.537-.094.264-.547.519-.763.556-.217.038-.423.056-1.22-.263-1.04-.417-1.821-1.332-1.92-1.464z"/></svg>
+      Copiar Pedido p/ WhatsApp
+    </button>
+    <button class="btn-clear" onclick="clearSelection()">Limpar</button>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-img-col">
+        <img src="" id="modalImg" class="modal-img" alt="Foto do Barbante">
+      </div>
+      <div class="modal-info-col">
+        <div>
+          <div class="modal-badge" id="modalBadge">01</div>
+          <h2 class="modal-title" id="modalTitle">Café com Leite / Areia</h2>
+          <div class="modal-line" id="modalCategory">Linha Tradicional</div>
+          
+          <div class="specs">
+            <div class="spec-item">
+              <span class="spec-label">Composição</span>
+              <span class="spec-val">100% Algodão Ecológico</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Acabamento</span>
+              <span class="spec-val">Toque macio e regular</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Espessuras sugeridas</span>
+              <span class="spec-val">Fios 4, 6 e 8</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Aplicações</span>
+              <span class="spec-val">Crochê, Macramê, Tapetes, Sousplats</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="modal-nav">
+            <button class="btn btn-outline" style="flex:1" onclick="prevModal()">← Anterior</button>
+            <button class="btn btn-outline" style="flex:1" onclick="nextModal()">Próxima →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Catálogo Oficial de Cores • Barbantes 2026</strong></p>
+    <p style="margin-top: 6px;">* As cores podem apresentar pequenas variações conforme o lote de fabricação e a calibragem de cores do seu monitor/smartphone.</p>
+  </footer>
+
+  <script>
+    const COLORS = [
+      { id: "1", code: "01", name: "Café com Leite / Areia", category: "Linha Tradicional", is_neon: false, file: "1.jpeg", labeled: "01_Café_com_Leite_-_Areia.jpg" },
+      { id: "2", code: "02", name: "Rosa Bebê", category: "Linha Tradicional", is_neon: false, file: "2.jpeg", labeled: "02_Rosa_Bebê.jpg" },
+      { id: "3", code: "03", name: "Salmão", category: "Linha Tradicional", is_neon: false, file: "3.jpeg", labeled: "03_Salmão.jpg" },
+      { id: "4", code: "04", name: "Amarelo Ouro", category: "Linha Tradicional", is_neon: false, file: "4.jpeg", labeled: "04_Amarelo_Ouro.jpg" },
+      { id: "5", code: "05", name: "Vermelho", category: "Linha Tradicional", is_neon: false, file: "5.jpeg", labeled: "05_Vermelho.jpg" },
+      { id: "6", code: "06", name: "Cru", category: "Linha Tradicional", is_neon: false, file: "6.jpeg", labeled: "06_Cru.jpg" },
+      { id: "7", code: "07", name: "Terra Cota", category: "Linha Tradicional", is_neon: false, file: "7.jpeg", labeled: "07_Terra_Cota.jpg" },
+      { id: "8", code: "08", name: "Telha", category: "Linha Tradicional", is_neon: false, file: "8.jpeg", labeled: "08_Telha.jpg" },
+      { id: "9", code: "09", name: "Caramelo Escuro", category: "Linha Tradicional", is_neon: false, file: "9.jpeg", labeled: "09_Caramelo_Escuro.jpg" },
+      { id: "10", code: "10", name: "Preto", category: "Linha Tradicional", is_neon: false, file: "10.jpeg", labeled: "10_Preto.jpg" },
+      { id: "11", code: "11", name: "Laranja", category: "Linha Tradicional", is_neon: false, file: "11.jpeg", labeled: "11_Laranja.jpg" },
+      { id: "12", code: "12", name: "Turquesa", category: "Linha Tradicional", is_neon: false, file: "12.jpeg", labeled: "12_Turquesa.jpg" },
+      { id: "13", code: "13", name: "Verde Musgo", category: "Linha Tradicional", is_neon: false, file: "13.jpeg", labeled: "13_Verde_Musgo.jpg" },
+      { id: "14", code: "14", name: "Lilás", category: "Linha Tradicional", is_neon: false, file: "14.jpeg", labeled: "14_Lilás.jpg" },
+      { id: "15", code: "15", name: "Pink", category: "Linha Tradicional", is_neon: false, file: "15.jpeg", labeled: "15_Pink.jpg" },
+      { id: "16", code: "16", name: "Verde Bandeira", category: "Linha Tradicional", is_neon: false, file: "16.jpeg", labeled: "16_Verde_Bandeira.jpg" },
+      { id: "17", code: "17", name: "Chocolate", category: "Linha Tradicional", is_neon: false, file: "17.jpeg", labeled: "17_Chocolate.jpg" },
+      { id: "1E", code: "1E", name: "Laranja Neon", category: "Linha Especial Neon", is_neon: true, file: "1E.jpeg", labeled: "1E_Laranja_Neon.jpg" },
+      { id: "2E", code: "2E", name: "Amarelo Neon", category: "Linha Especial Neon", is_neon: true, file: "2E.jpeg", labeled: "2E_Amarelo_Neon.jpg" }
+    ];
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let selectedColors = new Set();
+    let currentModalIndex = 0;
+
+    function renderCards() {
+      const gridTrad = document.getElementById('grid-tradicional');
+      const gridNeon = document.getElementById('grid-neon');
+      gridTrad.innerHTML = '';
+      gridNeon.innerHTML = '';
+
+      let countTrad = 0;
+      let countNeon = 0;
+
+      COLORS.forEach((item, index) => {
+        const matchesFilter = currentFilter === 'all' || 
+          (currentFilter === 'tradicional' && !item.is_neon) ||
+          (currentFilter === 'neon' && item.is_neon);
+
+        const q = searchQuery.toLowerCase().trim();
+        const matchesSearch = !q || 
+          item.name.toLowerCase().includes(q) || 
+          item.code.toLowerCase().includes(q) ||
+          item.category.toLowerCase().includes(q);
+
+        if (!matchesFilter || !matchesSearch) return;
+
+        const isSelected = selectedColors.has(item.code);
+        const card = document.createElement('div');
+        card.className = `card ${item.is_neon ? 'neon-card' : ''}`;
+        card.onclick = () => openModal(index);
+
+        card.innerHTML = `
+          <div class="card-img-wrap">
+            <button class="card-select-btn ${isSelected ? 'selected' : ''}" 
+                    title="Selecionar para pedido"
+                    onclick="toggleSelect(event, '${item.code}')">
+              ${isSelected ? '✓' : '+'}
+            </button>
+            <img src="Cores/${item.file}" class="card-img" alt="${item.name}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-badge ${item.is_neon ? (item.id === '1E' ? 'badge-1e' : 'badge-2e') : ''}">${item.code}</div>
+            <div class="card-info">
+              <div class="card-title">${item.name}</div>
+              <div class="card-category">${item.category}</div>
+            </div>
+          </div>
+        `;
+
+        if (item.is_neon) {
+          gridNeon.appendChild(card);
+          countNeon++;
+        } else {
+          gridTrad.appendChild(card);
+          countTrad++;
+        }
+      });
+
+      document.getElementById('sec-tradicional').style.display = countTrad > 0 ? 'block' : 'none';
+      document.getElementById('sec-neon').style.display = countNeon > 0 ? 'block' : 'none';
+    }
+
+    function setFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCards();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCards();
+    });
+
+    function toggleSelect(e, code) {
+      e.stopPropagation();
+      if (selectedColors.has(code)) {
+        selectedColors.delete(code);
+      } else {
+        selectedColors.add(code);
+      }
+      updateOrderBar();
+      renderCards();
+    }
+
+    function clearSelection() {
+      selectedColors.clear();
+      updateOrderBar();
+      renderCards();
+    }
+
+    function updateOrderBar() {
+      const bar = document.getElementById('orderBar');
+      const countEl = document.getElementById('selectedCount');
+      countEl.innerText = selectedColors.size;
+      if (selectedColors.size > 0) {
+        bar.classList.add('show');
+      } else {
+        bar.classList.remove('show');
+      }
+    }
+
+    function copyWhatsAppOrder() {
+      const selectedItems = COLORS.filter(c => selectedColors.has(c.code));
+      if (selectedItems.length === 0) return;
+
+      let msg = "*PEDIDO DE BARBANTES:*\n\n";
+      selectedItems.forEach(item => {
+        msg += `• *${item.code}* - ${item.name} (${item.category})\n`;
+      });
+      msg += `\nTotal: ${selectedItems.length} cor(es) selecionada(s).`;
+
+      navigator.clipboard.writeText(msg).then(() => {
+        alert("✅ Lista de cores copiada com sucesso!\nVocê já pode colar a mensagem diretamente no WhatsApp.");
+      }).catch(() => {
+        prompt("Copie seu pedido abaixo:", msg);
+      });
+    }
+
+    // LIGHTBOX MODAL
+    function openModal(index) {
+      currentModalIndex = index;
+      const item = COLORS[index];
+      const overlay = document.getElementById('modalOverlay');
+      
+      document.getElementById('modalImg').src = `Cores/${item.file}`;
+      document.getElementById('modalBadge').innerText = item.code;
+      document.getElementById('modalTitle').innerText = item.name;
+      document.getElementById('modalCategory').innerText = item.category;
+
+      const badgeEl = document.getElementById('modalBadge');
+      if (item.is_neon) {
+        badgeEl.style.background = item.id === '1E' ? '#FF6600' : '#C4E000';
+        badgeEl.style.color = item.id === '1E' ? '#FFFFFF' : '#2D3A00';
+      } else {
+        badgeEl.style.background = '#2D2722';
+        badgeEl.style.color = '#FFFFFF';
+      }
+
+      overlay.classList.add('open');
+    }
+
+    function closeModal(e) {
+      document.getElementById('modalOverlay').classList.remove('open');
+    }
+
+    function nextModal() {
+      currentModalIndex = (currentModalIndex + 1) % COLORS.length;
+      openModal(currentModalIndex);
+    }
+
+    function prevModal() {
+      currentModalIndex = (currentModalIndex - 1 + COLORS.length) % COLORS.length;
+      openModal(currentModalIndex);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextModal();
+      if (e.key === 'ArrowLeft') prevModal();
+    });
+
+    // Initial render
+    renderCards();
+  </script>
+</body>
+</html>

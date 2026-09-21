@@ -1,0 +1,2 @@
+<!-- Redirecionador / Cópia Direta do Catálogo Interativo -->
+<!-- Abra o arquivo index.html no mesmo diretório para a versão completa -->
