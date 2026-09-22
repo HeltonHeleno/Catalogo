@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo Oficial de Cores • Barbantes & Fios</title>
+  <title>Catálogo Oficial • Barbantes & Modelos em Crochê</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #F8F7F4;
+      --bg: #F9F8F6;
       --card-bg: #FFFFFF;
-      --text-main: #231F1C;
-      --text-muted: #7E7469;
-      --border: #E8E3D9;
+      --text-main: #241E1A;
+      --text-muted: #786C60;
+      --border: #E8E2D8;
       --border-focus: #C4B9A7;
-      --accent: #9A6648;
-      --accent-hover: #835237;
+      --accent: #A0674B;
+      --accent-hover: #865239;
+      --accent-light: #F4EFEB;
       --neon-orange: #FF6600;
-      --neon-yellow: #B5D400;
+      --neon-yellow: #B8D600;
       --radius: 16px;
-      --shadow: 0 4px 20px -2px rgba(44, 38, 30, 0.06), 0 2px 6px -1px rgba(44, 38, 30, 0.04);
+      --shadow: 0 4px 20px -2px rgba(44, 38, 30, 0.05), 0 2px 6px -1px rgba(44, 38, 30, 0.03);
       --shadow-hover: 0 16px 32px -4px rgba(44, 38, 30, 0.12), 0 6px 12px -2px rgba(44, 38, 30, 0.06);
     }
 
@@ -36,14 +37,14 @@
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.5;
-      padding-bottom: 90px;
+      padding-bottom: 100px;
     }
 
     /* HEADER */
     header {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border);
-      padding: 40px 24px 32px;
+      padding: 44px 24px 34px;
       text-align: center;
       position: relative;
     }
@@ -51,10 +52,10 @@
     .header-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 16px;
-      background: #F4EFEB;
-      border: 1px solid #E2D6CB;
+      gap: 8px;
+      padding: 6px 18px;
+      background: var(--accent-light);
+      border: 1px solid #E4D8CC;
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 700;
@@ -66,27 +67,27 @@
 
     h1 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
       font-weight: 700;
-      color: #231C18;
+      color: #241D18;
       letter-spacing: -0.01em;
       margin-bottom: 8px;
     }
 
     .header-sub {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-size: clamp(0.95rem, 2vw, 1.12rem);
       color: var(--text-muted);
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto 24px;
     }
 
-    /* ACTION BAR */
+    /* QUICK ACTIONS */
     .catalog-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 16px;
     }
 
     .btn {
@@ -95,7 +96,7 @@
       gap: 8px;
       padding: 10px 20px;
       border-radius: 12px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
@@ -122,17 +123,74 @@
       border-color: var(--border-focus);
     }
 
-    /* CONTROLS (SEARCH & FILTERS) */
+    /* MAIN NAVIGATION SWITCH (CORES vs MODELOS) */
+    .main-nav-container {
+      max-width: 1320px;
+      margin: 32px auto 0;
+      padding: 0 24px;
+    }
+
+    .nav-tabs-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .main-segmented-nav {
+      display: inline-flex;
+      background: #EAE5DC;
+      padding: 5px;
+      border-radius: 999px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .main-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: #6E6255;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+
+    .main-nav-btn.active {
+      background: #FFFFFF;
+      color: var(--text-main);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-count-badge {
+      background: rgba(0, 0, 0, 0.08);
+      color: inherit;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+    }
+    .main-nav-btn.active .nav-count-badge {
+      background: var(--text-main);
+      color: #FFFFFF;
+    }
+
+    /* SEARCH & CATEGORY FILTERS */
     .controls-container {
-      max-width: 1300px;
-      margin: 32px auto 24px;
+      max-width: 1320px;
+      margin: 0 auto 28px;
       padding: 0 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 850px) {
       .controls-container {
         flex-direction: row;
         align-items: center;
@@ -143,12 +201,12 @@
     .search-box {
       position: relative;
       flex: 1;
-      max-width: 480px;
+      max-width: 500px;
     }
 
     .search-input {
       width: 100%;
-      padding: 12px 16px 12px 42px;
+      padding: 12px 16px 12px 44px;
       border: 1px solid var(--border);
       border-radius: 12px;
       font-size: 0.95rem;
@@ -158,7 +216,7 @@
     }
     .search-input:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(154, 102, 72, 0.15);
+      box-shadow: 0 0 0 3px rgba(160, 103, 75, 0.15);
     }
 
     .search-icon {
@@ -170,19 +228,20 @@
       pointer-events: none;
     }
 
-    .filter-tabs {
+    .sub-filter-tabs {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       padding-bottom: 4px;
+      scrollbar-width: thin;
     }
 
-    .tab-btn {
-      padding: 8px 18px;
+    .sub-tab-btn {
+      padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #FFFFFF;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
@@ -190,42 +249,53 @@
       transition: all 0.2s;
     }
 
-    .tab-btn.active {
+    .sub-tab-btn.active {
       background: var(--text-main);
       color: #FFFFFF;
       border-color: var(--text-main);
     }
 
-    /* MAIN CONTAINER */
+    /* MAIN CONTENT */
     .container {
-      max-width: 1300px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* SECTIONS */
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 32px 0 16px;
+    /* SECTION HEADERS */
+    .section-header {
+      margin: 36px 0 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      color: var(--text-main);
+      gap: 14px;
     }
 
-    .section-title::after {
-      content: "";
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .section-line {
       flex: 1;
       height: 1px;
       background: var(--border);
     }
 
-    .section-title.neon-title {
-      color: #E05A00;
+    .section-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      white-space: nowrap;
     }
-    .section-title.neon-title::after {
-      background: #FFD1B3;
+
+    .neon-sec-title {
+      color: #E25D00;
+    }
+    .neon-sec-line {
+      background: #FFD4BA;
     }
 
     /* CARDS GRID */
@@ -235,14 +305,14 @@
       gap: 24px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .cards-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
       }
     }
 
-    /* CARD STYLING */
+    /* CARD DESIGN */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -263,17 +333,24 @@
     }
 
     .card.neon-card {
-      border: 2px solid #FF8C42;
+      border: 2px solid #FFA066;
     }
     .card.neon-card:hover {
-      border-color: #FF5500;
+      border-color: #FF6600;
       box-shadow: 0 16px 32px -4px rgba(255, 102, 0, 0.2);
+    }
+
+    .card.model-card {
+      border-color: #E5DFC9;
+    }
+    .card.model-card:hover {
+      border-color: var(--accent);
     }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      aspect-ratio: 4 / 4.8;
+      aspect-ratio: 4 / 4.4;
       background: #F1ECE6;
       overflow: hidden;
     }
@@ -289,14 +366,35 @@
       transform: scale(1.05);
     }
 
+    .card-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #4A3E34;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 2;
+    }
+
+    .card-tag.neon-tag {
+      background: #FF6600;
+      color: #FFFFFF;
+      border: none;
+    }
+
     .card-select-btn {
       position: absolute;
       top: 10px;
       right: 10px;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.85);
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(4px);
       border: 1px solid rgba(0, 0, 0, 0.1);
       display: flex;
@@ -305,11 +403,13 @@
       cursor: pointer;
       z-index: 2;
       transition: all 0.2s;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
     .card-select-btn:hover {
       background: #FFFFFF;
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
 
     .card-select-btn.selected {
@@ -350,6 +450,16 @@
       color: #2D3A00;
     }
 
+    .card-badge.badge-model {
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      width: auto;
+      min-width: 44px;
+      padding: 0 8px;
+    }
+
     .card-info {
       flex: 1;
       min-width: 0;
@@ -357,7 +467,7 @@
 
     .card-title {
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
@@ -365,16 +475,22 @@
       margin-bottom: 2px;
     }
 
-    @media (max-width: 600px) {
+    .card-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
       .card-title {
-        font-size: 0.88rem;
+        font-size: 0.86rem;
         white-space: normal;
         line-height: 1.25;
       }
       .card-badge {
         width: 36px;
         height: 36px;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
       .card-body {
         padding: 10px 12px;
@@ -382,35 +498,37 @@
       }
     }
 
-    .card-category {
-      font-size: 0.78rem;
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
       color: var(--text-muted);
-      font-weight: 500;
+      display: none;
+    }
+    .empty-state h3 {
+      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
     }
 
-    .neon-card .card-category {
-      color: #E05A00;
-      font-weight: 700;
-    }
-
-    /* FLOATING CART BAR */
+    /* FLOATING ORDER CART BAR */
     .order-bar {
       position: fixed;
       bottom: 20px;
       left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #1E1B18;
+      transform: translateX(-50%) translateY(120px);
+      background: #1F1B17;
       color: #FFFFFF;
       padding: 12px 24px;
       border-radius: 999px;
       display: flex;
       align-items: center;
-      gap: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       z-index: 100;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      width: calc(100% - 40px);
-      max-width: 580px;
+      width: calc(100% - 36px);
+      max-width: 620px;
     }
 
     .order-bar.show {
@@ -419,19 +537,21 @@
 
     .order-bar-text {
       flex: 1;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .order-bar-count {
-      font-weight: 800;
+    .order-bar-text strong {
       color: #34D399;
     }
 
     .btn-whatsapp {
       background: #25D366;
       color: #FFFFFF;
-      padding: 8px 18px;
+      padding: 9px 20px;
       border-radius: 999px;
       font-size: 0.88rem;
       font-weight: 700;
@@ -439,11 +559,13 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
-      transition: background 0.2s;
+      gap: 8px;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
     }
     .btn-whatsapp:hover {
       background: #1EBE5D;
+      transform: scale(1.02);
     }
 
     .btn-clear {
@@ -459,12 +581,12 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 12, 10, 0.8);
+      background: rgba(18, 14, 12, 0.82);
       backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 20px;
       z-index: 200;
     }
 
@@ -475,7 +597,7 @@
     .modal-content {
       background: #FFFFFF;
       border-radius: 20px;
-      max-width: 900px;
+      max-width: 950px;
       width: 100%;
       overflow: hidden;
       display: flex;
@@ -483,6 +605,7 @@
       position: relative;
       animation: modalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       max-height: 90vh;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
     }
 
     @keyframes modalIn {
@@ -497,7 +620,7 @@
     }
 
     .modal-img-col {
-      flex: 1.2;
+      flex: 1.25;
       background: #F4EFEB;
       display: flex;
       align-items: center;
@@ -509,36 +632,38 @@
     .modal-img {
       width: 100%;
       height: 100%;
-      max-height: 550px;
+      max-height: 560px;
       object-fit: cover;
     }
 
     .modal-info-col {
       flex: 1;
-      padding: 36px 32px;
+      padding: 36px 30px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow-y: auto;
     }
 
     .modal-close {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 14px;
+      right: 14px;
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.06);
+      background: rgba(0, 0, 0, 0.08);
       border: none;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
+      transition: background 0.2s;
     }
     .modal-close:hover {
-      background: rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.16);
     }
 
     .modal-badge {
@@ -550,7 +675,7 @@
       background: #2D2722;
       color: #FFFFFF;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-bottom: 12px;
       width: fit-content;
     }
@@ -560,35 +685,51 @@
       font-size: 1.8rem;
       color: var(--text-main);
       margin-bottom: 6px;
+      line-height: 1.2;
     }
 
     .modal-line {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
+    .modal-desc {
+      font-size: 0.9rem;
+      color: #554D45;
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .specs {
+      margin-bottom: 24px;
+    }
     .spec-item {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 8px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
     .spec-label { color: var(--text-muted); }
     .spec-val { font-weight: 600; color: var(--text-main); }
 
+    .modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     .modal-nav {
       display: flex;
       gap: 10px;
-      margin-top: 24px;
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      padding: 40px 24px;
+      padding: 44px 24px;
       color: var(--text-muted);
       font-size: 0.88rem;
       border-top: 1px solid var(--border);
@@ -600,7 +741,7 @@
     @media print {
       body { background: #FFFFFF; padding: 0; }
       header { padding: 10px 0; }
-      .catalog-actions, .controls-container, .order-bar, .modal-overlay { display: none !important; }
+      .catalog-actions, .main-nav-container, .controls-container, .order-bar, .modal-overlay { display: none !important; }
       .cards-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 10px !important; }
       .card { box-shadow: none !important; border: 1px solid #CCC !important; page-break-inside: avoid; }
     }
@@ -610,14 +751,14 @@
 
   <!-- HEADER -->
   <header>
-    <div class="header-badge">★ Catálogo Oficial 2026 • Barbantes & Fios</div>
-    <h1>Catálogo de Cores</h1>
-    <p class="header-sub">Fios 100% selecionados, toque macio, alta definição e rendimento superior para seus trabalhos em crochê, macramê e artesanato.</p>
+    <div class="header-badge">★ ATELIÊ ARTESANAL • CATÁLOGO OFICIAL ★</div>
+    <h1>Catálogo de Cores & Modelos</h1>
+    <p class="header-sub">Fios 100% ecológicos de primeira linha e peças exclusivas feitas à mão em crochê. Escolha seu modelo favorito e personalize com as cores do nosso mostruário!</p>
     
     <div class="catalog-actions">
       <a href="Catalogo_Completo_Barbantes.jpg" download="Catalogo_Completo_Barbantes.jpg" class="btn btn-primary">
         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-        Baixar Catálogo Geral (Ultra HD)
+        Baixar Cartela de Cores (HD)
       </a>
       <a href="Catalogo_WhatsApp_Parte1.jpg" download="Catalogo_WhatsApp_Parte1.jpg" class="btn btn-outline">
         📱 Cartela WhatsApp (Parte 1)
@@ -631,48 +772,114 @@
     </div>
   </header>
 
-  <!-- CONTROLS -->
-  <div class="controls-container">
-    <div class="search-box">
-      <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-      <input type="text" id="searchInput" class="search-input" placeholder="Buscar por cor ou número (ex: rosa, terra, 05, neon)...">
-    </div>
-
-    <div class="filter-tabs">
-      <button class="tab-btn active" onclick="setFilter('all', this)">Todas as Cores (19)</button>
-      <button class="tab-btn" onclick="setFilter('tradicional', this)">Linha Tradicional (17)</button>
-      <button class="tab-btn" onclick="setFilter('neon', this)">Cores Especiais Neon (2)</button>
+  <!-- MAIN SEGMENTED NAV: CORES vs MODELOS -->
+  <div class="main-nav-container">
+    <div class="nav-tabs-wrapper">
+      <div class="main-segmented-nav">
+        <button class="main-nav-btn active" id="tab-nav-all" onclick="switchMainTab('all')">
+          🌟 Ver Tudo <span class="nav-count-badge" id="badge-all">44</span>
+        </button>
+        <button class="main-nav-btn" id="tab-nav-cores" onclick="switchMainTab('cores')">
+          🧶 Tabela de Cores <span class="nav-count-badge">19</span>
+        </button>
+        <button class="main-nav-btn" id="tab-nav-modelos" onclick="switchMainTab('modelos')">
+          🛋️ Modelos em Crochê <span class="nav-count-badge">25</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- MAIN CATALOG CONTENT -->
-  <main class="container">
-    <!-- TRADICIONAL SECTION -->
-    <div id="sec-tradicional">
-      <div class="section-title">
-        <span>Linha Tradicional</span>
-        <small style="font-weight: 500; font-size: 0.85rem; color: var(--text-muted);">(Cores 01 a 17)</small>
-      </div>
-      <div class="cards-grid" id="grid-tradicional"></div>
+  <!-- CONTROLS: SEARCH & SUB-FILTERS -->
+  <div class="controls-container">
+    <div class="search-box">
+      <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Buscar por cor, modelo ou número (ex: rosa, banheiro, trilho, 05)...">
     </div>
 
-    <!-- NEON SECTION -->
-    <div id="sec-neon">
-      <div class="section-title neon-title">
-        <span>Cores Especiais • Linha Neon</span>
-        <small style="font-weight: 500; font-size: 0.85rem; color: #E05A00;">(Cores 1E e 2E • Pigmentação Luminosa)</small>
-      </div>
-      <div class="cards-grid" id="grid-neon"></div>
+    <!-- Dynamic Subfilters based on active main tab -->
+    <div class="sub-filter-tabs" id="subFiltersContainer">
+      <!-- Injected via JavaScript -->
     </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="container">
+    
+    <!-- SEÇÃO: CORES TRADICIONAIS -->
+    <section id="sec-cores-trad" class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">🧶 Linha Tradicional de Cores</h2>
+        <span class="section-desc">(Cores 01 a 17 • Barbante 100% Algodão)</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-cores-trad"></div>
+    </section>
+
+    <!-- SEÇÃO: CORES ESPECIAIS NEON -->
+    <section id="sec-cores-neon" class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title neon-sec-title">✨ Cores Especiais • Linha Neon</h2>
+        <span class="section-desc" style="color:#E25D00;">(Cores 1E e 2E • Pigmentação Luminosa)</span>
+        <div class="section-line neon-sec-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-cores-neon"></div>
+    </section>
+
+    <!-- SEÇÃO: MODELOS - JOGOS DE BANHEIRO -->
+    <section id="sec-modelos-banheiro" class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">🚿 Jogos de Banheiro em Crochê</h2>
+        <span class="section-desc">(Tampas de vaso, tapetes de encaixe e pia)</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-modelos-banheiro"></div>
+    </section>
+
+    <!-- SEÇÃO: MODELOS - JOGOS DE COZINHA -->
+    <section id="sec-modelos-cozinha" class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">🍳 Jogos de Cozinha</h2>
+        <span class="section-desc">(Passadeiras e tapetes para pia e fogão)</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-modelos-cozinha"></div>
+    </section>
+
+    <!-- SEÇÃO: MODELOS - TRILHOS DE MESA -->
+    <section id="sec-modelos-trilho" class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">🪡 Trilhos e Caminhos de Mesa</h2>
+        <span class="section-desc">(Peças rendadas para mesa de jantar e aparador)</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-modelos-trilho"></div>
+    </section>
+
+    <!-- SEÇÃO: MODELOS - TAPETES E PEÇAS AVULSAS -->
+    <section id="sec-modelos-avulso" class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">🛋️ Tapetes e Peças Avulsas</h2>
+        <span class="section-desc">(Modelos ovais, retangulares, florais e relevos)</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-modelos-avulso"></div>
+    </section>
+
+    <!-- EMPTY STATE IF SEARCH YIELDS NOTHING -->
+    <div class="empty-state" id="emptyState">
+      <h3>Nenhum resultado encontrado</h3>
+      <p>Tente buscar por outro termo ou limpe os filtros.</p>
+    </div>
+
   </main>
 
-  <!-- FLOATING ORDER BAR -->
+  <!-- FLOATING ORDER CART BAR -->
   <div class="order-bar" id="orderBar">
     <div class="order-bar-text">
-      <span class="order-bar-count" id="selectedCount">0</span> cores selecionadas
+      <span id="orderSummaryText"><strong>0 itens</strong> selecionados</span>
     </div>
     <button class="btn-whatsapp" onclick="copyWhatsAppOrder()">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.983.538 1.986.822 2.8.822 3.178 0 5.767-2.587 5.767-5.766.001-3.18-2.587-5.767-5.771-5.767zm-3.08 8.01c-.139 0-.303-.024-.467-.225-.164-.201-.63-0.617-.63-1.507s.646-1.748.74-1.876c.094-.128.21-.161.282-.161.071 0 .142.001.204.004.067.004.156-.026.244.185.094.225.32 0.781.348.839.028.058.047.126.009.2-.038.075-.057.122-.113.189-.057.066-.12.148-.171.198-.057.057-.116.119-.05.233.066.114.294.485.631.785.433.385.798.505.912.562.113.057.18.047.246-.028.066-.075.283-.33.359-.443.075-.113.151-.094.254-.056.104.038.659.311.772.368.113.057.189.085.217.132.028.047.028.273-.066.537-.094.264-.547.519-.763.556-.217.038-.423.056-1.22-.263-1.04-.417-1.821-1.332-1.92-1.464z"/></svg>
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.983.538 1.986.822 2.8.822 3.178 0 5.767-2.587 5.767-5.766.001-3.18-2.587-5.767-5.771-5.767zm-3.08 8.01c-.139 0-.303-.024-.467-.225-.164-.201-.63-0.617-.63-1.507s.646-1.748.74-1.876c.094-.128.21-.161.282-.161.071 0 .142.001.204.004.067.004.156-.026.244.185.094.225.32 0.781.348.839.028.058.047.126.009.2-.038.075-.057.122-.113.189-.057.066-.12.148-.171.198-.057.057-.116.119-.05.233.066.114.294.485.631.785.433.385.798.505.912.562.113.057.18.047.246-.028.066-.075.283-.33.359-.443.075-.113.151-.094.254-.056.104.038.659.311.772.368.113.057.189.085.217.132.028.047.028.273-.066.537-.094.264-.547.519-.763.556-.217.038-.423.056-1.22-.263-1.04-.417-1.821-1.332-1.92-1.464z"/></svg>
       Copiar Pedido p/ WhatsApp
     </button>
     <button class="btn-clear" onclick="clearSelection()">Limpar</button>
@@ -683,35 +890,24 @@
     <div class="modal-content" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">&times;</button>
       <div class="modal-img-col">
-        <img src="" id="modalImg" class="modal-img" alt="Foto do Barbante">
+        <img src="" id="modalImg" class="modal-img" alt="Foto">
       </div>
       <div class="modal-info-col">
         <div>
           <div class="modal-badge" id="modalBadge">01</div>
-          <h2 class="modal-title" id="modalTitle">Café com Leite / Areia</h2>
-          <div class="modal-line" id="modalCategory">Linha Tradicional</div>
+          <h2 class="modal-title" id="modalTitle">Título do Item</h2>
+          <div class="modal-line" id="modalCategory">Categoria</div>
+          <p class="modal-desc" id="modalDesc">Descrição do item selecionado.</p>
           
-          <div class="specs">
-            <div class="spec-item">
-              <span class="spec-label">Composição</span>
-              <span class="spec-val">100% Algodão Ecológico</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Acabamento</span>
-              <span class="spec-val">Toque macio e regular</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Espessuras sugeridas</span>
-              <span class="spec-val">Fios 4, 6 e 8</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Aplicações</span>
-              <span class="spec-val">Crochê, Macramê, Tapetes, Sousplats</span>
-            </div>
+          <div class="specs" id="modalSpecs">
+            <!-- Dynamic specs -->
           </div>
         </div>
 
-        <div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="modalSelectBtn" onclick="toggleModalSelection()">
+            + Adicionar ao Pedido / Orçamento
+          </button>
           <div class="modal-nav">
             <button class="btn btn-outline" style="flex:1" onclick="prevModal()">← Anterior</button>
             <button class="btn btn-outline" style="flex:1" onclick="nextModal()">Próxima →</button>
@@ -723,189 +919,480 @@
 
   <!-- FOOTER -->
   <footer>
-    <p><strong>Catálogo Oficial de Cores • Barbantes 2026</strong></p>
-    <p style="margin-top: 6px;">* As cores podem apresentar pequenas variações conforme o lote de fabricação e a calibragem de cores do seu monitor/smartphone.</p>
+    <p><strong>Catálogo Oficial • Barbantes & Crochê 2026</strong></p>
+    <p style="margin-top: 6px;">* As cores dos barbantes e das peças podem apresentar leves variações dependendo da iluminação da foto e da calibração de cada tela.</p>
+    <p style="margin-top: 4px; font-size: 0.8rem; color: #A09485;">Feito à mão com carinho • Encomendas e orçamentos via WhatsApp.</p>
   </footer>
 
   <script>
+    /* ==========================================================
+       DADOS: CORES DE BARBANTES (19 itens)
+       ========================================================== */
     const COLORS = [
-      { id: "1", code: "01", name: "Café com Leite / Areia", category: "Linha Tradicional", is_neon: false, file: "1.jpeg", labeled: "01_Café_com_Leite_-_Areia.jpg" },
-      { id: "2", code: "02", name: "Rosa Bebê", category: "Linha Tradicional", is_neon: false, file: "2.jpeg", labeled: "02_Rosa_Bebê.jpg" },
-      { id: "3", code: "03", name: "Salmão", category: "Linha Tradicional", is_neon: false, file: "3.jpeg", labeled: "03_Salmão.jpg" },
-      { id: "4", code: "04", name: "Amarelo Ouro", category: "Linha Tradicional", is_neon: false, file: "4.jpeg", labeled: "04_Amarelo_Ouro.jpg" },
-      { id: "5", code: "05", name: "Vermelho", category: "Linha Tradicional", is_neon: false, file: "5.jpeg", labeled: "05_Vermelho.jpg" },
-      { id: "6", code: "06", name: "Cru", category: "Linha Tradicional", is_neon: false, file: "6.jpeg", labeled: "06_Cru.jpg" },
-      { id: "7", code: "07", name: "Terra Cota", category: "Linha Tradicional", is_neon: false, file: "7.jpeg", labeled: "07_Terra_Cota.jpg" },
-      { id: "8", code: "08", name: "Telha", category: "Linha Tradicional", is_neon: false, file: "8.jpeg", labeled: "08_Telha.jpg" },
-      { id: "9", code: "09", name: "Caramelo Escuro", category: "Linha Tradicional", is_neon: false, file: "9.jpeg", labeled: "09_Caramelo_Escuro.jpg" },
-      { id: "10", code: "10", name: "Preto", category: "Linha Tradicional", is_neon: false, file: "10.jpeg", labeled: "10_Preto.jpg" },
-      { id: "11", code: "11", name: "Laranja", category: "Linha Tradicional", is_neon: false, file: "11.jpeg", labeled: "11_Laranja.jpg" },
-      { id: "12", code: "12", name: "Turquesa", category: "Linha Tradicional", is_neon: false, file: "12.jpeg", labeled: "12_Turquesa.jpg" },
-      { id: "13", code: "13", name: "Verde Musgo", category: "Linha Tradicional", is_neon: false, file: "13.jpeg", labeled: "13_Verde_Musgo.jpg" },
-      { id: "14", code: "14", name: "Lilás", category: "Linha Tradicional", is_neon: false, file: "14.jpeg", labeled: "14_Lilás.jpg" },
-      { id: "15", code: "15", name: "Pink", category: "Linha Tradicional", is_neon: false, file: "15.jpeg", labeled: "15_Pink.jpg" },
-      { id: "16", code: "16", name: "Verde Bandeira", category: "Linha Tradicional", is_neon: false, file: "16.jpeg", labeled: "16_Verde_Bandeira.jpg" },
-      { id: "17", code: "17", name: "Chocolate", category: "Linha Tradicional", is_neon: false, file: "17.jpeg", labeled: "17_Chocolate.jpg" },
-      { id: "1E", code: "1E", name: "Laranja Neon", category: "Linha Especial Neon", is_neon: true, file: "1E.jpeg", labeled: "1E_Laranja_Neon.jpg" },
-      { id: "2E", code: "2E", name: "Amarelo Neon", category: "Linha Especial Neon", is_neon: true, file: "2E.jpeg", labeled: "2E_Amarelo_Neon.jpg" }
+      { id: "c1", type: "cor", code: "01", name: "Café com Leite / Areia", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/1.jpeg", desc: "Tom neutro sofisticado, ideal para bases de tapetes e sousplats elegantes." },
+      { id: "c2", type: "cor", code: "02", name: "Rosa Bebê", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/2.jpeg", desc: "Tom delicado e suave, muito procurado para peças infantis e decorações românticas." },
+      { id: "c3", type: "cor", code: "03", name: "Salmão", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/3.jpeg", desc: "Cor aconchegante e alegre que agrega leveza e modernidade à peça." },
+      { id: "c4", type: "cor", code: "04", name: "Amarelo Ouro", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/4.jpeg", desc: "Cor solar e vibrante, perfeita para detalhes florais, girassóis e barrados iluminados." },
+      { id: "c5", type: "cor", code: "05", name: "Vermelho", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/5.jpeg", desc: "Vermelho clássico e intenso, campeão de pedidos em jogos de cozinha e banheiros." },
+      { id: "c6", type: "cor", code: "06", name: "Cru", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/6.jpeg", desc: "O barbante natural mais versátil do artesanato, combina perfeitamente com todas as cores." },
+      { id: "c7", type: "cor", code: "07", name: "Terra Cota", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/7.jpeg", desc: "Tom rústico contemporâneo e elegante, destaque absoluto nas decorações boho chic." },
+      { id: "c8", type: "cor", code: "08", name: "Telha", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/8.jpeg", desc: "Tonalidade terrosa marcante com personalidade e excelente contraste com o cru." },
+      { id: "c9", type: "cor", code: "09", name: "Caramelo Escuro", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/9.jpeg", desc: "Cor quente e sofisticada que confere ar requintado a salas e quartos." },
+      { id: "c10", type: "cor", code: "10", name: "Preto", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/10.jpeg", desc: "Preto profundo com tingimento firme, excelente para contornos e peças modernas." },
+      { id: "c11", type: "cor", code: "11", name: "Laranja", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/11.jpeg", desc: "Tom quente e estimulante, ideal para cozinhas e decorações vivas." },
+      { id: "c12", type: "cor", code: "12", name: "Turquesa", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/12.jpeg", desc: "Azul turquesa vibrante com alto brilho, remete ao frescor das águas tropicais." },
+      { id: "c13", type: "cor", code: "13", name: "Verde Musgo", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/13.jpeg", desc: "Verde natural e equilibrado, perfeito para folhas e peças com inspiração botânica." },
+      { id: "c14", type: "cor", code: "14", name: "Lilás", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/14.jpeg", desc: "Tom pastel sereno e relaxante, ideal para composições de banheiros delicados." },
+      { id: "c15", type: "cor", code: "15", name: "Pink", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/15.jpeg", desc: "Rosa marcante e expressivo para quem busca peças alegres e cheias de vida." },
+      { id: "c16", type: "cor", code: "16", name: "Verde Bandeira", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/16.jpeg", desc: "Verde intenso e encorpado, excelente para folhas, folhagens e detalhes natalinos." },
+      { id: "c17", type: "cor", code: "17", name: "Chocolate", category: "tradicional", categoryLabel: "Linha Tradicional", is_neon: false, file: "Cores/17.jpeg", desc: "Marrom encorpado e aconchegante, combina impecavelmente com areia, bege e cru." },
+      { id: "c1e", type: "cor", code: "1E", name: "Laranja Neon", category: "neon", categoryLabel: "Cores Especiais • Neon", is_neon: true, file: "Cores/1E.jpeg", desc: "Pigmentação fluorescente de altíssima luminosidade para projetos diferenciados." },
+      { id: "c2e", type: "cor", code: "2E", name: "Amarelo Neon", category: "neon", categoryLabel: "Cores Especiais • Neon", is_neon: true, file: "Cores/2E.jpeg", desc: "Amarelo neon vibrante e elétrico, traz luz e modernidade instantânea ao trabalho." }
     ];
 
-    let currentFilter = 'all';
+    /* ==========================================================
+       DADOS: MODELOS E PEÇAS EM CROCHÊ (25 itens)
+       ========================================================== */
+    const MODELS = [
+      // BANHEIRO
+      { id: "m_ban_1", type: "modelo", code: "BAN-01", name: "Jogo de Banheiro - Tampa do Vaso", category: "banheiro", categoryLabel: "Jogo de Banheiro", file: "Modelos/Banheiro 1.1.jpeg", desc: "Capa para tampa do vaso sanitário tecida em crochê com bico trabalhado em relevo e motivo floral delicado." },
+      { id: "m_ban_2", type: "modelo", code: "BAN-02", name: "Jogo de Banheiro - Tapete de Encaixe", category: "banheiro", categoryLabel: "Jogo de Banheiro", file: "Modelos/Banheiro 1.2.jpeg", desc: "Tapete recortado no formato ideal para encaixar perfeitamente no pé do vaso sanitário." },
+      { id: "m_ban_3", type: "modelo", code: "BAN-03", name: "Jogo de Banheiro - Tapete de Pia", category: "banheiro", categoryLabel: "Jogo de Banheiro", file: "Modelos/Banheiro 1.3.jpeg", desc: "Tapete retangular/oval trabalhado para posicionar em frente à pia ou saída do box." },
+      { id: "m_ban_4", type: "modelo", code: "BAN-04", name: "Jogo de Banheiro - Vista Completa", category: "banheiro", categoryLabel: "Jogo de Banheiro", file: "Modelos/Banheiro 1.4.jpeg", desc: "Conjunto completo evidenciando a harmonia das cores e a perfeição do caimento no ambiente." },
+
+      // COZINHA
+      { id: "m_coz_1", type: "modelo", code: "COZ-01", name: "Jogo de Cozinha 3 Peças Completo", category: "cozinha", categoryLabel: "Jogo de Cozinha", file: "Modelos/Cozinha.jpeg", desc: "Conjunto clássico de cozinha composto por 1 passadeira grande e 2 tapetes menores com barrado verde trabalhado." },
+      { id: "m_coz_2", type: "modelo", code: "COZ-02", name: "Jogo de Cozinha - Passadeira Grande", category: "cozinha", categoryLabel: "Jogo de Cozinha", file: "Modelos/Cozinha 2.jpeg", desc: "Passadeira retangular de alta durabilidade e tamanho ideal para a pia ou balcão da cozinha." },
+      { id: "m_coz_3", type: "modelo", code: "COZ-03", name: "Jogo de Cozinha - Tapete Complementar", category: "cozinha", categoryLabel: "Jogo de Cozinha", file: "Modelos/Cozinha 3.jpeg", desc: "Tapete menor para entrada da cozinha ou em frente à geladeira com bico rendado." },
+
+      // TRILHOS DE MESA
+      { id: "m_tri_1", type: "modelo", code: "TRILHO-01", name: "Trilho de Mesa Clássico Rendado", category: "trilho", categoryLabel: "Trilho de Mesa", file: "Modelos/Trilho de Mesa.jpeg", desc: "Caminho de mesa rendado confeccionado em ponto artesanal clássico com caimento perfeito sobre mesas de madeira e vidro." },
+      { id: "m_tri_2", type: "modelo", code: "TRILHO-02", name: "Trilho de Mesa Florata", category: "trilho", categoryLabel: "Trilho de Mesa", file: "Modelos/Trilho de Mesa 1.2.jpeg", desc: "Trilho elegante com entrelaçamento de motivos geométricos e flores em relevo para decorar ocasiões especiais." },
+      { id: "m_tri_3", type: "modelo", code: "TRILHO-03", name: "Trilho de Mesa Rendado Imperial", category: "trilho", categoryLabel: "Trilho de Mesa", file: "Modelos/Trilho de Mesa 1.3.jpeg", desc: "Peça de fino acabamento com bicos sinuosos e textura leve, valorizando sua mesa posta." },
+
+      // PEÇAS AVULSAS E TAPETES
+      { id: "m_avu_1", type: "modelo", code: "AV-01", name: "Tapete Retangular Floral Amarelo", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso.jpeg", desc: "Tapete com centro cru e borda em amarelo ouro enriquecido com aplicação de flor artesanal tridimensional." },
+      { id: "m_avu_2", type: "modelo", code: "AV-02", name: "Tapete Oval Bicolor (Vermelho e Cru)", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 2.jpeg", desc: "Tapete oval com centro em barbante cru e moldura dupla em vermelho vivo com acabamento pontiagudo." },
+      { id: "m_avu_3", type: "modelo", code: "AV-03", name: "Tapete Oval Harmonia Terrosa", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 3.jpeg", desc: "Design versátil em tons suaves com bico concha, ideal para beira de cama ou hall." },
+      { id: "m_avu_4", type: "modelo", code: "AV-04", name: "Tapete Mandala Redondo", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 4.jpeg", desc: "Peça circular com trama circular inspirada em mandalas, perfeita para salas de estar e quartos." },
+      { id: "m_avu_5", type: "modelo", code: "AV-05", name: "Tapete Oval Romântico", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 5.jpeg", desc: "Modelo aconchegante com combinação de pontos leque e bordas sinuosas." },
+      { id: "m_avu_6", type: "modelo", code: "AV-06", name: "Tapete Retangular Básico Elegante", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 6.jpeg", desc: "Trama firme e encorpada que não desliza, excelente para uso diário em portas e corredores." },
+      { id: "m_avu_7", type: "modelo", code: "AV-07", name: "Tapete Texturizado Aconchego", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 7.jpeg", desc: "Pontos em relevo que proporcionam conforto ao pisar e beleza artesanal única." },
+      { id: "m_avu_8", type: "modelo", code: "AV-08", name: "Tapete Oval Relevo Imperial", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 8.jpeg", desc: "Tapete oval sofisticado trabalhado em ponto russo com bico largo rendado." },
+      { id: "m_avu_8_1", type: "modelo", code: "AV-08.1", name: "Detalhe de Pontos (Tapete Imperial)", category: "avulso", categoryLabel: "Detalhe de Textura", file: "Modelos/Avulso 8.1.jpeg", desc: "Foto aproximada mostrando a precisão dos pontos entrelaçados e a qualidade superior do fio." },
+      { id: "m_avu_8_2", type: "modelo", code: "AV-08.2", name: "Detalhe do Bico Rendado", category: "avulso", categoryLabel: "Detalhe de Acabamento", file: "Modelos/Avulso 8.2.jpeg", desc: "Visão detalhada do bico de acabamento com caimento impecável e sem ondulações." },
+      { id: "m_avu_9", type: "modelo", code: "AV-09", name: "Tapete Oval Neutro Contemporâneo", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 9.jpeg", desc: "Tons sóbrios fáceis de harmonizar com qualquer estilo de mobília ou piso." },
+      { id: "m_avu_10", type: "modelo", code: "AV-10", name: "Tapete Estilo Boho Geométrico", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 10.jpeg", desc: "Padrão moderno que une a rusticidade acolhedora do crochê com linhas retas." },
+      { id: "m_avu_11", type: "modelo", code: "AV-11", name: "Tapete Passadeira Mini", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 11.jpeg", desc: "Comprimento intermediário sob medida para lavatórios, bancadas ou varandas." },
+      { id: "m_avu_12", type: "modelo", code: "AV-12", name: "Tapete Oval Ponto Pipoca", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 12.jpeg", desc: "Pontos fofos e encorpados que criam uma textura aconchegante e visual luxuoso." },
+      { id: "m_avu_13", type: "modelo", code: "AV-13", name: "Tapete Elegância Artesanal", category: "avulso", categoryLabel: "Tapete Avulso", file: "Modelos/Avulso 13.jpeg", desc: "Produção 100% artesanal com barbante selecionado, garantindo longevidade à peça." }
+    ];
+
+    // Combine all items for modal navigation and search
+    const ALL_ITEMS = [...COLORS, ...MODELS];
+
+    /* ==========================================================
+       ESTADO DA APLICAÇÃO
+       ========================================================== */
+    let currentMainTab = 'all'; // 'all', 'cores', 'modelos'
+    let currentSubFilter = 'all';
     let searchQuery = '';
-    let selectedColors = new Set();
+    let selectedItems = new Map(); // id -> item object
     let currentModalIndex = 0;
+    let activeModalList = ALL_ITEMS;
 
-    function renderCards() {
-      const gridTrad = document.getElementById('grid-tradicional');
-      const gridNeon = document.getElementById('grid-neon');
-      gridTrad.innerHTML = '';
-      gridNeon.innerHTML = '';
+    /* ==========================================================
+       CONFIGURAÇÃO DOS SUBFILTROS POR ABA PRINCIPAL
+       ========================================================== */
+    const SUB_FILTERS_DEF = {
+      all: [
+        { id: "all", label: "Todos os Itens (44)" },
+        { id: "cores", label: "🧶 Apenas Cores (19)" },
+        { id: "modelos", label: "🛋️ Apenas Modelos (25)" }
+      ],
+      cores: [
+        { id: "all", label: "Todas as Cores (19)" },
+        { id: "tradicional", label: "Linha Tradicional (17)" },
+        { id: "neon", label: "Linha Especial Neon (2)" }
+      ],
+      modelos: [
+        { id: "all", label: "Todos os Modelos (25)" },
+        { id: "banheiro", label: "🚿 Jogos de Banheiro (4)" },
+        { id: "cozinha", label: "🍳 Jogos de Cozinha (3)" },
+        { id: "trilho", label: "🪡 Trilhos de Mesa (3)" },
+        { id: "avulso", label: "🛋️ Tapetes Avulsos (15)" }
+      ]
+    };
 
-      let countTrad = 0;
-      let countNeon = 0;
+    function renderSubFilters() {
+      const container = document.getElementById('subFiltersContainer');
+      container.innerHTML = '';
 
-      COLORS.forEach((item, index) => {
-        const matchesFilter = currentFilter === 'all' || 
-          (currentFilter === 'tradicional' && !item.is_neon) ||
-          (currentFilter === 'neon' && item.is_neon);
+      const filters = SUB_FILTERS_DEF[currentMainTab] || SUB_FILTERS_DEF.all;
+      filters.forEach(f => {
+        const btn = document.createElement('button');
+        btn.className = `sub-tab-btn ${currentSubFilter === f.id ? 'active' : ''}`;
+        btn.innerText = f.label;
+        btn.onclick = () => {
+          currentSubFilter = f.id;
+          renderSubFilters();
+          renderCatalog();
+        };
+        container.appendChild(btn);
+      });
+    }
 
-        const q = searchQuery.toLowerCase().trim();
-        const matchesSearch = !q || 
-          item.name.toLowerCase().includes(q) || 
-          item.code.toLowerCase().includes(q) ||
-          item.category.toLowerCase().includes(q);
+    function switchMainTab(tab) {
+      currentMainTab = tab;
+      currentSubFilter = 'all';
 
-        if (!matchesFilter || !matchesSearch) return;
+      document.querySelectorAll('.main-nav-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`tab-nav-${tab}`);
+      if (activeBtn) activeBtn.classList.add('active');
 
-        const isSelected = selectedColors.has(item.code);
-        const card = document.createElement('div');
-        card.className = `card ${item.is_neon ? 'neon-card' : ''}`;
-        card.onclick = () => openModal(index);
+      renderSubFilters();
+      renderCatalog();
+    }
 
-        card.innerHTML = `
-          <div class="card-img-wrap">
-            <button class="card-select-btn ${isSelected ? 'selected' : ''}" 
-                    title="Selecionar para pedido"
-                    onclick="toggleSelect(event, '${item.code}')">
-              ${isSelected ? '✓' : '+'}
-            </button>
-            <img src="Cores/${item.file}" class="card-img" alt="${item.name}" loading="lazy">
-          </div>
-          <div class="card-body">
-            <div class="card-badge ${item.is_neon ? (item.id === '1E' ? 'badge-1e' : 'badge-2e') : ''}">${item.code}</div>
-            <div class="card-info">
-              <div class="card-title">${item.name}</div>
-              <div class="card-category">${item.category}</div>
-            </div>
-          </div>
-        `;
+    /* ==========================================================
+       CRIAÇÃO DO CARD (HTML)
+       ========================================================== */
+    function createCardElement(item) {
+      const isCor = item.type === "cor";
+      const isSelected = selectedItems.has(item.id);
 
+      const card = document.createElement('div');
+      card.className = `card ${isCor && item.is_neon ? 'neon-card' : ''} ${!isCor ? 'model-card' : ''}`;
+      card.onclick = () => openModalByItem(item);
+
+      // Encode filename URL properly for GitHub Pages
+      const safeFileUrl = encodeURI(item.file);
+
+      // Top Tag
+      let topTagHtml = '';
+      if (isCor) {
         if (item.is_neon) {
-          gridNeon.appendChild(card);
-          countNeon++;
+          topTagHtml = `<div class="card-tag neon-tag">★ LINHA NEON</div>`;
+        }
+      } else {
+        const icon = item.category === "banheiro" ? "🚿" : item.category === "cozinha" ? "🍳" : item.category === "trilho" ? "🪡" : "🛋️";
+        topTagHtml = `<div class="card-tag">${icon} ${item.categoryLabel}</div>`;
+      }
+
+      // Badge
+      let badgeClass = "card-badge";
+      if (isCor) {
+        if (item.is_neon) {
+          badgeClass += item.id === "c1e" ? " badge-1e" : " badge-2e";
+        }
+      } else {
+        badgeClass += " badge-model";
+      }
+
+      card.innerHTML = `
+        <div class="card-img-wrap">
+          ${topTagHtml}
+          <button class="card-select-btn ${isSelected ? 'selected' : ''}" 
+                  title="${isSelected ? 'Remover do pedido' : 'Adicionar ao pedido'}"
+                  onclick="toggleSelect(event, '${item.id}')">
+            ${isSelected ? '✓' : '+'}
+          </button>
+          <img src="${safeFileUrl}" class="card-img" alt="${item.name}" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="${badgeClass}">${item.code}</div>
+          <div class="card-info">
+            <div class="card-title">${item.name}</div>
+            <div class="card-subtitle">${item.categoryLabel}</div>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    /* ==========================================================
+       RENDERIZAÇÃO COMPLETA DO CATÁLOGO
+       ========================================================== */
+    function renderCatalog() {
+      const q = searchQuery.toLowerCase().trim();
+
+      // Grids
+      const gridCoresTrad = document.getElementById('grid-cores-trad');
+      const gridCoresNeon = document.getElementById('grid-cores-neon');
+      const gridModBan = document.getElementById('grid-modelos-banheiro');
+      const gridModCoz = document.getElementById('grid-modelos-cozinha');
+      const gridModTri = document.getElementById('grid-modelos-trilho');
+      const gridModAvu = document.getElementById('grid-modelos-avulso');
+
+      gridCoresTrad.innerHTML = '';
+      gridCoresNeon.innerHTML = '';
+      gridModBan.innerHTML = '';
+      gridModCoz.innerHTML = '';
+      gridModTri.innerHTML = '';
+      gridModAvu.innerHTML = '';
+
+      let cTrad = 0, cNeon = 0, mBan = 0, mCoz = 0, mTri = 0, mAvu = 0;
+
+      // Filter function
+      function matchItem(item) {
+        // Main Tab constraint
+        if (currentMainTab === 'cores' && item.type !== 'cor') return false;
+        if (currentMainTab === 'modelos' && item.type !== 'modelo') return false;
+
+        // SubFilter constraint
+        if (currentMainTab === 'all') {
+          if (currentSubFilter === 'cores' && item.type !== 'cor') return false;
+          if (currentSubFilter === 'modelos' && item.type !== 'modelo') return false;
+        } else if (currentMainTab === 'cores') {
+          if (currentSubFilter === 'tradicional' && item.category !== 'tradicional') return false;
+          if (currentSubFilter === 'neon' && item.category !== 'neon') return false;
+        } else if (currentMainTab === 'modelos') {
+          if (currentSubFilter !== 'all' && item.category !== currentSubFilter) return false;
+        }
+
+        // Search constraint
+        if (q) {
+          const matchName = item.name.toLowerCase().includes(q);
+          const matchCode = item.code.toLowerCase().includes(q);
+          const matchCat = item.categoryLabel.toLowerCase().includes(q);
+          const matchDesc = item.desc.toLowerCase().includes(q);
+          if (!matchName && !matchCode && !matchCat && !matchDesc) return false;
+        }
+
+        return true;
+      }
+
+      // 1. Process Cores
+      COLORS.forEach(item => {
+        if (!matchItem(item)) return;
+        const card = createCardElement(item);
+        if (item.is_neon) {
+          gridCoresNeon.appendChild(card);
+          cNeon++;
         } else {
-          gridTrad.appendChild(card);
-          countTrad++;
+          gridCoresTrad.appendChild(card);
+          cTrad++;
         }
       });
 
-      document.getElementById('sec-tradicional').style.display = countTrad > 0 ? 'block' : 'none';
-      document.getElementById('sec-neon').style.display = countNeon > 0 ? 'block' : 'none';
+      // 2. Process Modelos
+      MODELS.forEach(item => {
+        if (!matchItem(item)) return;
+        const card = createCardElement(item);
+        if (item.category === "banheiro") {
+          gridModBan.appendChild(card);
+          mBan++;
+        } else if (item.category === "cozinha") {
+          gridModCoz.appendChild(card);
+          mCoz++;
+        } else if (item.category === "trilho") {
+          gridModTri.appendChild(card);
+          mTri++;
+        } else {
+          gridModAvu.appendChild(card);
+          mAvu++;
+        }
+      });
+
+      // Show/hide sections based on item count
+      document.getElementById('sec-cores-trad').style.display = cTrad > 0 ? 'block' : 'none';
+      document.getElementById('sec-cores-neon').style.display = cNeon > 0 ? 'block' : 'none';
+      document.getElementById('sec-modelos-banheiro').style.display = mBan > 0 ? 'block' : 'none';
+      document.getElementById('sec-modelos-cozinha').style.display = mCoz > 0 ? 'block' : 'none';
+      document.getElementById('sec-modelos-trilho').style.display = mTri > 0 ? 'block' : 'none';
+      document.getElementById('sec-modelos-avulso').style.display = mAvu > 0 ? 'block' : 'none';
+
+      const totalVisible = cTrad + cNeon + mBan + mCoz + mTri + mAvu;
+      document.getElementById('emptyState').style.display = totalVisible === 0 ? 'block' : 'none';
     }
 
-    function setFilter(filter, btn) {
-      currentFilter = filter;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderCards();
-    }
+    /* ==========================================================
+       BARRA DE SELEÇÃO / PEDIDO FLUTUANTE
+       ========================================================= */
+    function toggleSelect(e, id) {
+      if (e) e.stopPropagation();
+      const item = ALL_ITEMS.find(x => x.id === id);
+      if (!item) return;
 
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      renderCards();
-    });
-
-    function toggleSelect(e, code) {
-      e.stopPropagation();
-      if (selectedColors.has(code)) {
-        selectedColors.delete(code);
+      if (selectedItems.has(id)) {
+        selectedItems.delete(id);
       } else {
-        selectedColors.add(code);
+        selectedItems.set(id, item);
       }
+
       updateOrderBar();
-      renderCards();
+      renderCatalog();
+      updateModalSelectBtn();
     }
 
     function clearSelection() {
-      selectedColors.clear();
+      selectedItems.clear();
       updateOrderBar();
-      renderCards();
+      renderCatalog();
+      updateModalSelectBtn();
     }
 
     function updateOrderBar() {
       const bar = document.getElementById('orderBar');
-      const countEl = document.getElementById('selectedCount');
-      countEl.innerText = selectedColors.size;
-      if (selectedColors.size > 0) {
-        bar.classList.add('show');
-      } else {
+      const textEl = document.getElementById('orderSummaryText');
+      const size = selectedItems.size;
+
+      if (size === 0) {
         bar.classList.remove('show');
+        return;
       }
+
+      let countCores = 0;
+      let countModelos = 0;
+      selectedItems.forEach(item => {
+        if (item.type === "cor") countCores++;
+        else countModelos++;
+      });
+
+      let parts = [];
+      if (countModelos > 0) parts.push(`${countModelos} modelo${countModelos > 1 ? 's' : ''}`);
+      if (countCores > 0) parts.push(`${countCores} cor${countCores > 1 ? 'es' : ''}`);
+
+      textEl.innerHTML = `<strong>${parts.join(' e ')}</strong> selecionada(s)`;
+      bar.classList.add('show');
     }
 
     function copyWhatsAppOrder() {
-      const selectedItems = COLORS.filter(c => selectedColors.has(c.code));
-      if (selectedItems.length === 0) return;
+      if (selectedItems.size === 0) return;
 
-      let msg = "*PEDIDO DE BARBANTES:*\n\n";
+      let msg = "*OLÁ! GOSTARIA DE FAZER UM ORÇAMENTO / PEDIDO:*\n\n";
+
+      let modelos = [];
+      let cores = [];
+
       selectedItems.forEach(item => {
-        msg += `• *${item.code}* - ${item.name} (${item.category})\n`;
+        if (item.type === "modelo") modelos.push(item);
+        else cores.push(item);
       });
-      msg += `\nTotal: ${selectedItems.length} cor(es) selecionada(s).`;
 
-      navigator.clipboard.writeText(msg).then(() => {
-        alert("✅ Lista de cores copiada com sucesso!\nVocê já pode colar a mensagem diretamente no WhatsApp.");
-      }).catch(() => {
-        prompt("Copie seu pedido abaixo:", msg);
-      });
-    }
-
-    // LIGHTBOX MODAL
-    function openModal(index) {
-      currentModalIndex = index;
-      const item = COLORS[index];
-      const overlay = document.getElementById('modalOverlay');
-      
-      document.getElementById('modalImg').src = `Cores/${item.file}`;
-      document.getElementById('modalBadge').innerText = item.code;
-      document.getElementById('modalTitle').innerText = item.name;
-      document.getElementById('modalCategory').innerText = item.category;
-
-      const badgeEl = document.getElementById('modalBadge');
-      if (item.is_neon) {
-        badgeEl.style.background = item.id === '1E' ? '#FF6600' : '#C4E000';
-        badgeEl.style.color = item.id === '1E' ? '#FFFFFF' : '#2D3A00';
-      } else {
-        badgeEl.style.background = '#2D2722';
-        badgeEl.style.color = '#FFFFFF';
+      if (modelos.length > 0) {
+        msg += "*🛋️ Modelos / Peças em Crochê:*\n";
+        modelos.forEach(m => {
+          msg += `• [${m.code}] ${m.name} (${m.categoryLabel})\n`;
+        });
+        msg += "\n";
       }
 
-      overlay.classList.add('open');
+      if (cores.length > 0) {
+        msg += "*🧶 Cores de Barbante Escolhidas:*\n";
+        cores.forEach(c => {
+          msg += `• [${c.code}] ${c.name} (${c.categoryLabel})\n`;
+        });
+        msg += "\n";
+      }
+
+      msg += "Gostaria de consultar prazo de produção e valores, por favor!";
+
+      navigator.clipboard.writeText(msg).then(() => {
+        alert("✅ Lista copiada com sucesso!\nVocê já pode colar a mensagem diretamente no WhatsApp do ateliê.");
+      }).catch(() => {
+        prompt("Copie sua mensagem abaixo:", msg);
+      });
     }
 
-    function closeModal(e) {
+    /* ==========================================================
+       LIGHTBOX MODAL INTERATIVO
+       ========================================================== */
+    function openModalByItem(item) {
+      const idx = ALL_ITEMS.findIndex(x => x.id === item.id);
+      if (idx !== -1) {
+        currentModalIndex = idx;
+        renderModalContent(item);
+        document.getElementById('modalOverlay').classList.add('open');
+      }
+    }
+
+    function renderModalContent(item) {
+      document.getElementById('modalImg').src = encodeURI(item.file);
+      document.getElementById('modalBadge').innerText = item.code;
+      document.getElementById('modalTitle').innerText = item.name;
+      document.getElementById('modalCategory').innerText = item.categoryLabel;
+      document.getElementById('modalDesc').innerText = item.desc;
+
+      const badgeEl = document.getElementById('modalBadge');
+      if (item.type === "cor") {
+        if (item.is_neon) {
+          badgeEl.style.background = item.id === "c1e" ? "#FF6600" : "#C4E000";
+          badgeEl.style.color = item.id === "c1e" ? "#FFFFFF" : "#243100";
+        } else {
+          badgeEl.style.background = "#2D2722";
+          badgeEl.style.color = "#FFFFFF";
+        }
+      } else {
+        badgeEl.style.background = "var(--accent)";
+        badgeEl.style.color = "#FFFFFF";
+      }
+
+      // Specs
+      const specsContainer = document.getElementById('modalSpecs');
+      if (item.type === "cor") {
+        specsContainer.innerHTML = `
+          <div class="spec-item"><span class="spec-label">Composição</span><span class="spec-val">100% Algodão Ecológico</span></div>
+          <div class="spec-item"><span class="spec-label">Toque</span><span class="spec-val">Macio e encorpado</span></div>
+          <div class="spec-item"><span class="spec-label">Sugestão de agulha</span><span class="spec-val">3.5mm a 4.5mm</span></div>
+          <div class="spec-item"><span class="spec-label">Ideal para</span><span class="spec-val">Crochê, Macramê e Tapeçaria</span></div>
+        `;
+      } else {
+        specsContainer.innerHTML = `
+          <div class="spec-item"><span class="spec-label">Produção</span><span class="spec-val">100% Artesanal Feito à Mão</span></div>
+          <div class="spec-item"><span class="spec-label">Material</span><span class="spec-val">Barbante de Algodão Selecionado</span></div>
+          <div class="spec-item"><span class="spec-label">Personalização</span><span class="spec-val">Disponível em qualquer cor do catálogo</span></div>
+          <div class="spec-item"><span class="spec-label">Disponibilidade</span><span class="spec-val">Sob encomenda / Pronta entrega</span></div>
+        `;
+      }
+
+      updateModalSelectBtn();
+    }
+
+    function updateModalSelectBtn() {
+      const item = ALL_ITEMS[currentModalIndex];
+      const btn = document.getElementById('modalSelectBtn');
+      if (!btn || !item) return;
+
+      const isSel = selectedItems.has(item.id);
+      if (isSel) {
+        btn.innerText = "✓ Item Selecionado (Clique para remover)";
+        btn.style.background = "#10B981";
+      } else {
+        btn.innerText = `+ Adicionar ${item.type === 'cor' ? 'esta Cor' : 'este Modelo'} ao Pedido`;
+        btn.style.background = "var(--text-main)";
+      }
+    }
+
+    function toggleModalSelection() {
+      const item = ALL_ITEMS[currentModalIndex];
+      if (item) {
+        toggleSelect(null, item.id);
+      }
+    }
+
+    function closeModal() {
       document.getElementById('modalOverlay').classList.remove('open');
     }
 
     function nextModal() {
-      currentModalIndex = (currentModalIndex + 1) % COLORS.length;
-      openModal(currentModalIndex);
+      currentModalIndex = (currentModalIndex + 1) % ALL_ITEMS.length;
+      renderModalContent(ALL_ITEMS[currentModalIndex]);
     }
 
     function prevModal() {
-      currentModalIndex = (currentModalIndex - 1 + COLORS.length) % COLORS.length;
-      openModal(currentModalIndex);
+      currentModalIndex = (currentModalIndex - 1 + ALL_ITEMS.length) % ALL_ITEMS.length;
+      renderModalContent(ALL_ITEMS[currentModalIndex]);
     }
+
+    /* ==========================================================
+       EVENT LISTENERS
+       ========================================================== */
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCatalog();
+    });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
@@ -913,8 +1400,9 @@
       if (e.key === 'ArrowLeft') prevModal();
     });
 
-    // Initial render
-    renderCards();
+    // INICIALIZAÇÃO
+    renderSubFilters();
+    renderCatalog();
   </script>
 </body>
 </html>
