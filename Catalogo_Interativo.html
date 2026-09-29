@@ -347,6 +347,35 @@
       border-color: var(--accent);
     }
 
+    /* AJUSTE PARA OS MODELOS E TAPETES (Borda elegante e imagem inteira sem cortes) */
+    .card.model-card .card-img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: #F6F2EC;
+      aspect-ratio: 4 / 3.8;
+    }
+
+    .card.model-card .card-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1.5px solid #D8CFBE;
+      box-shadow: 0 2px 8px rgba(44, 38, 30, 0.08);
+      background: #FFFFFF;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .card.model-card:hover .card-img {
+      transform: scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 6px 16px rgba(44, 38, 30, 0.14);
+    }
+
     .card-img-wrap {
       position: relative;
       width: 100%;
@@ -627,13 +656,28 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
+      padding: 24px;
     }
 
     .modal-img {
-      width: 100%;
-      height: 100%;
-      max-height: 560px;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 520px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1.5px solid #D8CFBE;
+      box-shadow: 0 8px 24px rgba(44, 38, 30, 0.12);
+      background: #FFFFFF;
+    }
+
+    @media (max-width: 767px) {
+      .modal-img-col {
+        padding: 16px;
+      }
+      .modal-img {
+        max-height: 280px;
+      }
     }
 
     .modal-info-col {
