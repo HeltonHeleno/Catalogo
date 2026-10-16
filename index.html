@@ -781,11 +781,215 @@
       background: #FFFFFF;
     }
 
+    /* ==========================================================
+       ZOOM VIEWER
+       ========================================================== */
+    body.no-scroll { overflow: hidden; }
+
+    .modal-img-col { cursor: zoom-in; }
+    .modal-img { -webkit-user-drag: none; }
+
+    .zoom-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 24, 20, 0.72);
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .zoom-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.96);
+      display: none;
+      flex-direction: column;
+      z-index: 300;
+    }
+    .zoom-overlay.open { display: flex; }
+
+    .zoom-toolbar {
+      position: absolute;
+      top: max(12px, env(safe-area-inset-top));
+      right: max(12px, env(safe-area-inset-right));
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .zoom-level {
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 700;
+      min-width: 48px;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    .zoom-btn {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      backdrop-filter: blur(6px);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .zoom-btn:active { background: rgba(255, 255, 255, 0.28); }
+    .zoom-btn-text { font-size: 0.85rem; }
+    .zoom-close { background: rgba(255, 255, 255, 0.24); }
+
+    .zoom-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      touch-action: none;
+      cursor: zoom-in;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .zoom-stage.zoomed { cursor: grab; }
+    .zoom-stage.zoomed:active { cursor: grabbing; }
+
+    .zoom-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      will-change: transform;
+      transform-origin: center center;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .zoom-help {
+      position: absolute;
+      bottom: max(14px, env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.76rem;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 6px 14px;
+      border-radius: 999px;
+      text-align: center;
+      width: max-content;
+      max-width: calc(100% - 24px);
+      pointer-events: none;
+    }
+
+    /* ==========================================================
+       AJUSTES RESPONSIVOS (celular / tablet / desktop)
+       ========================================================== */
+    img { max-width: 100%; }
+    .search-input { font-size: 1rem; }
+    .section-header { flex-wrap: wrap; }
+    .section-title, .section-desc { white-space: normal; }
+
+    /* Touch: alvos maiores e sem hover "preso" */
+    .card-select-btn { width: 40px; height: 40px; }
+    .modal-close { width: 44px; height: 44px; background: rgba(255, 255, 255, 0.92); box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+
+    @media (hover: none) {
+      .card:hover { transform: none; box-shadow: var(--shadow); border-color: var(--border); }
+      .card.neon-card:hover { border-color: #FFA066; box-shadow: var(--shadow); }
+      .card.model-card:hover { border-color: #E5DFC9; }
+      .card:hover .card-img { transform: none; }
+      .card.model-card:hover .card-img { transform: none; border-color: #D8CFBE; }
+    }
+
+    /* Tablet */
+    @media (min-width: 641px) and (max-width: 1023px) {
+      .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    }
+
+    /* Desktop largo */
+    @media (min-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    }
+
+    /* Celular */
+    @media (max-width: 767px) {
+      .modal-overlay { padding: 10px; align-items: flex-end; }
+      .modal-content {
+        max-height: 94vh;
+        max-height: 94dvh;
+        overflow-y: auto;
+        border-radius: 18px;
+      }
+      .modal-img-col { flex: none; padding: 14px; }
+      .modal-img { max-height: 42vh; max-height: 42dvh; }
+      .modal-info-col { flex: none; overflow-y: visible; padding: 20px 18px calc(20px + env(safe-area-inset-bottom)); }
+      .modal-title { font-size: 1.45rem; }
+      .modal-actions .btn, .modal-nav .btn { justify-content: center; padding: 13px 16px; }
+    }
+
+    @media (max-width: 640px) {
+      body { padding-bottom: 120px; }
+      header { padding: 30px 16px 24px; }
+      .header-badge { font-size: 0.68rem; padding: 5px 12px; }
+      .header-sub { margin-bottom: 18px; }
+      .catalog-actions { gap: 8px; }
+      .catalog-actions .btn { flex: 1 1 calc(50% - 8px); justify-content: center; padding: 11px 10px; font-size: 0.8rem; text-align: center; }
+      .catalog-actions .btn:first-child { flex-basis: 100%; }
+
+      .main-nav-container { padding: 0 12px; margin-top: 22px; }
+      .nav-tabs-wrapper { justify-content: flex-start; }
+      .main-segmented-nav { width: 100%; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .main-segmented-nav::-webkit-scrollbar { display: none; }
+      .main-nav-btn { padding: 10px 16px; font-size: 0.84rem; flex: 1 0 auto; justify-content: center; }
+
+      .controls-container, .container { padding: 0 12px; }
+      .section-header { margin: 26px 0 14px; gap: 6px 10px; }
+      .section-title { font-size: 1.12rem; }
+      .section-desc { font-size: 0.78rem; flex-basis: 100%; order: 3; }
+      .section-line { order: 2; min-width: 20px; }
+
+      .order-bar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px 12px;
+        border-radius: 22px;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+        bottom: 10px;
+      }
+      .order-bar-text { flex: 1 0 100%; white-space: normal; }
+      .btn-whatsapp { flex: 1; justify-content: center; padding: 11px 16px; }
+      .btn-clear { padding: 10px 6px; }
+
+      .zoom-help { font-size: 0.7rem; }
+      .zoom-btn-text { display: none; }
+    }
+
+    @media (max-width: 359px) {
+      .cards-grid { gap: 10px; }
+      .card-body { padding: 8px 8px; }
+      .card-badge { width: 32px; height: 32px; font-size: 0.8rem; }
+      .main-nav-btn { padding: 9px 12px; font-size: 0.78rem; }
+    }
+
     /* PRINT STYLES */
     @media print {
       body { background: #FFFFFF; padding: 0; }
       header { padding: 10px 0; }
-      .catalog-actions, .main-nav-container, .controls-container, .order-bar, .modal-overlay { display: none !important; }
+      .catalog-actions, .main-nav-container, .controls-container, .order-bar, .modal-overlay, .zoom-overlay { display: none !important; }
       .cards-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 10px !important; }
       .card { box-shadow: none !important; border: 1px solid #CCC !important; page-break-inside: avoid; }
     }
@@ -933,8 +1137,9 @@
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div class="modal-img-col">
+      <div class="modal-img-col" onclick="openZoom()" title="Clique para ampliar">
         <img src="" id="modalImg" class="modal-img" alt="Foto">
+        <div class="zoom-hint" aria-hidden="true">🔍 Toque para ampliar</div>
       </div>
       <div class="modal-info-col">
         <div>
@@ -959,6 +1164,21 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ZOOM VIEWER -->
+  <div class="zoom-overlay" id="zoomOverlay" role="dialog" aria-label="Ampliar imagem">
+    <div class="zoom-toolbar">
+      <span class="zoom-level" id="zoomLevel">100%</span>
+      <button type="button" class="zoom-btn" onclick="Zoom.step(1/1.25)" aria-label="Diminuir zoom">&minus;</button>
+      <button type="button" class="zoom-btn" onclick="Zoom.step(1.25)" aria-label="Aumentar zoom">+</button>
+      <button type="button" class="zoom-btn zoom-btn-text" onclick="Zoom.reset()">Ajustar</button>
+      <button type="button" class="zoom-btn zoom-close" onclick="Zoom.close()" aria-label="Fechar zoom">&times;</button>
+    </div>
+    <div class="zoom-stage" id="zoomStage">
+      <img id="zoomImg" class="zoom-img" src="" alt="" draggable="false">
+    </div>
+    <div class="zoom-help">Pinça ou roda do mouse para ampliar • Arraste para mover • Toque duplo para alternar</div>
   </div>
 
   <!-- FOOTER -->
@@ -1141,7 +1361,7 @@
                   onclick="toggleSelect(event, '${item.id}')">
             ${isSelected ? '✓' : '+'}
           </button>
-          <img src="${safeFileUrl}" class="card-img" alt="${item.name}" loading="lazy">
+          <img src="${safeFileUrl}" class="card-img" alt="${item.name}" loading="lazy" decoding="async">
         </div>
         <div class="card-body">
           <div class="${badgeClass}">${item.code}</div>
@@ -1349,6 +1569,7 @@
         currentModalIndex = idx;
         renderModalContent(item);
         document.getElementById('modalOverlay').classList.add('open');
+        document.body.classList.add('no-scroll');
       }
     }
 
@@ -1418,6 +1639,7 @@
 
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('open');
+      document.body.classList.remove('no-scroll');
     }
 
     function nextModal() {
@@ -1438,7 +1660,149 @@
       renderCatalog();
     });
 
+    /* ==========================================================
+       VISUALIZADOR DE ZOOM (Pointer Events: pinça, arrastar, roda)
+       ========================================================== */
+    const Zoom = (() => {
+      const MIN = 1, MAX = 5, DBL = 2.5;
+      const overlay = document.getElementById('zoomOverlay');
+      const stage = document.getElementById('zoomStage');
+      const img = document.getElementById('zoomImg');
+      const label = document.getElementById('zoomLevel');
+      let scale = 1, tx = 0, ty = 0;
+      let isOpen = false;
+      const pointers = new Map();
+      let startDist = 0, startScale = 1, lastTap = 0, moved = false;
+
+      function clamp() {
+        const w = img.clientWidth * scale, h = img.clientHeight * scale;
+        const maxX = Math.max(0, (w - stage.clientWidth) / 2);
+        const maxY = Math.max(0, (h - stage.clientHeight) / 2);
+        tx = Math.min(maxX, Math.max(-maxX, tx));
+        ty = Math.min(maxY, Math.max(-maxY, ty));
+      }
+
+      function apply() {
+        clamp();
+        img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+        label.textContent = Math.round(scale * 100) + '%';
+        stage.classList.toggle('zoomed', scale > 1.01);
+      }
+
+      // Zoom mantendo o ponto (cx, cy) (relativo ao centro do palco) fixo
+      function zoomAt(newScale, cx, cy) {
+        newScale = Math.min(MAX, Math.max(MIN, newScale));
+        const ratio = newScale / scale;
+        tx = cx - (cx - tx) * ratio;
+        ty = cy - (cy - ty) * ratio;
+        scale = newScale;
+        if (scale <= MIN) { tx = 0; ty = 0; }
+        apply();
+      }
+
+      function relPoint(clientX, clientY) {
+        const r = stage.getBoundingClientRect();
+        return { x: clientX - r.left - r.width / 2, y: clientY - r.top - r.height / 2 };
+      }
+
+      function open(src, alt) {
+        img.src = src;
+        img.alt = alt || '';
+        scale = 1; tx = 0; ty = 0;
+        apply();
+        overlay.classList.add('open');
+        document.body.classList.add('no-scroll');
+        isOpen = true;
+      }
+
+      function close() {
+        overlay.classList.remove('open');
+        isOpen = false;
+        pointers.clear();
+        if (!document.getElementById('modalOverlay').classList.contains('open')) {
+          document.body.classList.remove('no-scroll');
+        }
+      }
+
+      function step(factor) { zoomAt(scale * factor, 0, 0); }
+      function reset() { scale = 1; tx = 0; ty = 0; apply(); }
+
+      stage.addEventListener('pointerdown', (e) => {
+        stage.setPointerCapture(e.pointerId);
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        moved = false;
+        if (pointers.size === 2) {
+          const [a, b] = [...pointers.values()];
+          startDist = Math.hypot(a.x - b.x, a.y - b.y);
+          startScale = scale;
+        }
+      });
+
+      stage.addEventListener('pointermove', (e) => {
+        if (!pointers.has(e.pointerId)) return;
+        const prev = pointers.get(e.pointerId);
+        const cur = { x: e.clientX, y: e.clientY };
+        pointers.set(e.pointerId, cur);
+
+        if (pointers.size === 2) {
+          const [a, b] = [...pointers.values()];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          const mid = relPoint((a.x + b.x) / 2, (a.y + b.y) / 2);
+          if (startDist > 0) zoomAt(startScale * (dist / startDist), mid.x, mid.y);
+          moved = true;
+        } else if (pointers.size === 1 && scale > 1) {
+          tx += cur.x - prev.x;
+          ty += cur.y - prev.y;
+          if (Math.abs(cur.x - prev.x) + Math.abs(cur.y - prev.y) > 1) moved = true;
+          apply();
+        }
+      });
+
+      function endPointer(e) {
+        if (!pointers.has(e.pointerId)) return;
+        pointers.delete(e.pointerId);
+        if (pointers.size === 1) {
+          startDist = 0;
+        }
+        if (pointers.size === 0 && e.type === 'pointerup' && !moved) {
+          const now = Date.now();
+          if (now - lastTap < 300) {
+            const p = relPoint(e.clientX, e.clientY);
+            if (scale > 1.01) reset(); else zoomAt(DBL, p.x, p.y);
+            lastTap = 0;
+          } else {
+            lastTap = now;
+          }
+        }
+        if (scale < 1.01) reset();
+      }
+      stage.addEventListener('pointerup', endPointer);
+      stage.addEventListener('pointercancel', endPointer);
+
+      stage.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const p = relPoint(e.clientX, e.clientY);
+        zoomAt(scale * (e.deltaY < 0 ? 1.15 : 1 / 1.15), p.x, p.y);
+      }, { passive: false });
+
+      window.addEventListener('resize', () => { if (isOpen) apply(); });
+
+      return { open, close, step, reset, get isOpen() { return isOpen; } };
+    })();
+
+    function openZoom() {
+      const src = document.getElementById('modalImg').getAttribute('src');
+      if (src) Zoom.open(src, document.getElementById('modalTitle').innerText);
+    }
+
     document.addEventListener('keydown', (e) => {
+      if (Zoom.isOpen) {
+        if (e.key === 'Escape') Zoom.close();
+        else if (e.key === '+' || e.key === '=') Zoom.step(1.25);
+        else if (e.key === '-' || e.key === '_') Zoom.step(1 / 1.25);
+        else if (e.key === '0') Zoom.reset();
+        return;
+      }
       if (e.key === 'Escape') closeModal();
       if (e.key === 'ArrowRight') nextModal();
       if (e.key === 'ArrowLeft') prevModal();
